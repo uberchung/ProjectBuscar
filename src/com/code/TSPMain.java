@@ -58,19 +58,41 @@ public class TSPMain {
             return;
         }
 
-        List<Integer> ids = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
 
         while(n.parent != null){
-            ids.add(n.id);
+            ids.add(n.getName());
             n = n.parent;
         }
-        ids.add(n.id);
+        ids.add(n.getName());
         Collections.reverse(ids);
 
-        for(int id : ids){
-            System.out.print(id + " ");
+        for(String id : ids){
+            System.out.print(id + " > ");
         }
         System.out.println("");
+    }
+
+    public static void printMenu()
+    {
+        System.out.println("Menu");
+        System.out.println("Points\t"+
+                " V1 -Negril\t"+
+                " V2 -Lucea\t"+
+                " V3 -Montego Bay\t"+
+                " V4 -Clark's Town\t"+
+                " V5 -Ocho Rios\t"+
+                " V6 -Port Maria\t"+
+                " V7 -Buff Bay\t"+
+                " V8 -Port Antonio\t"+
+                " V9 -Morant Bay\t"+
+                " V10 -Savanna-La Mar\t"+
+                " V11 -Black River\t"+
+                " V12 -Teasure Beach\t"+
+                " V13 -Alligator Pond\t"+
+                " V14 -May Pen\t"+
+                " V15 -Spainsh Town\t"+
+                " V16 -Kingston");
     }
 
     public static void main(String[] args) {
@@ -142,9 +164,10 @@ public class TSPMain {
         node14.addBranch(15, node15);
         node15.addBranch(30, node16);
 
-        Node head = node1;
+        printMenu();
+        Node head = node8;
         head.g = 0;
-        Node target = node15;
+        Node target = node16;
         Node res = aStar(head, target);
         printPath(res);
     }
